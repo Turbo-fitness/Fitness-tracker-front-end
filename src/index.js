@@ -1,10 +1,12 @@
-import { createRoot } from 'react-dom/client'
-
-const BasicComponentNameHere = () => { return ( <div> <p>Hello World!</p> </div> ) }
-
-const appElement = document.getElementById("app")
-
-const root = createRoot(appElement)
+import React from 'react';
+import { createRoot} from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
+import { Main } from "./components";
 
 
-root.render(<BasicComponentNameHere />)
+
+createRoot(document.querySelector('#root')).render(
+    <BrowserRouter>
+        <Main />
+    </BrowserRouter>
+ );

@@ -1,0 +1,10 @@
+export { default as Main } from './Main';
+export { default as Navbar } from './Navbar';
+export { default as Welcome } from './Welcome';
+export { default as Login } from './Login';
+export { default as Routines } from './Routines';
+export { default as Register } from './Register';
+export { default as Activities} from './Activities';
+export { default as Profile} from './Profile';
+export { default as CreateRoutine} from './CreateRoutine';
+export { default as CreateActivity} from './CreateActivity';
