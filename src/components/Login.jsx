@@ -19,8 +19,8 @@ const Login = ({ setIsLoggedIn, setToken, setUser, setUserRoutines, setUserActiv
         if(data.token) {
             setToken(data.token);
                 setUser({_id, username});
-                setUserPosts(posts)
-                setUserMessages(messages)
+                setUserRoutines(routines)
+                setUserActivities(activities)
             setIsLoggedIn(true);
             localStorage.setItem("token", data.token);
             

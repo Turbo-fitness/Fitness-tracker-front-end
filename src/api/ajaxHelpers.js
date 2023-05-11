@@ -20,8 +20,8 @@ export const registerUser = async (username, password) => {
           const result = await response.json();       
           console.log(result)
           return result
-      } catch (err) {
-          console.error(err);
+      } catch (error) {
+          console.error(error);
         }
       }
 
@@ -43,8 +43,8 @@ export const registerUser = async (username, password) => {
           const result = await response.json();
           console.log(result);
           return result
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
     }
     
@@ -59,8 +59,8 @@ export const registerUser = async (username, password) => {
           const result = await response.json();
           console.log(result);
           return result
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       }
 
@@ -79,8 +79,8 @@ export const registerUser = async (username, password) => {
           const result = await response.json();
           console.log(result);
           return result
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       }
 
@@ -97,8 +97,8 @@ export const registerUser = async (username, password) => {
           const result = await response.json();
           console.log(result);
           return result;
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       };
 
@@ -114,8 +114,8 @@ export const registerUser = async (username, password) => {
       
           console.log(result);
           return result
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       }
    export const makeActivity = async () => {
@@ -135,8 +135,8 @@ export const registerUser = async (username, password) => {
       
           console.log(result);
           return result
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       }
 
@@ -157,8 +157,8 @@ export const registerUser = async (username, password) => {
 //             const result = await response.json();
 //             console.log(result);
 //             return result
-//           } catch (err) {
-//           console.error(err);
+//           } catch (error) {
+//           console.error(error);
 //           }
 //       }
 
@@ -172,26 +172,42 @@ export const registerUser = async (username, password) => {
 //       const result = await response.json();
 //       console.log(result);
 //       return result
-//     } catch (err) {
-//       console.error(err);
+//     } catch (error) {
+//       console.error(error);
 //     }
 //   }     
+export const getAllRoutines = async () => {
+  try {
+  const response = await fetch(`${BASE_URL}/routines`, {
+    headers: {
+    'Content-Type': 'application/json',
+    },
+  });
+  
+  const result = await response.json();
+  console.log(result);
+  return result
+  } catch (err) {
+  console.error(err);
+  }
+  }
 
-  export const getAllRoutines  = async () => {
-    try {
-    const response = await fetch(`${BASE_URL}/routines`, {
-      headers: {
-      'Content-Type': 'application/json',
-      },
-    });
+
+  // export const getAllRoutines  = async () => {
+  //   try {
+  //   const response = await fetch(`${BASE_URL}/routines`, {
+  //     headers: {
+  //     'Content-Type': 'application/json',
+  //     },
+  //   });
     
-    const result = await response.json();
-    console.log(result);
-    return result
-    } catch (err) {
-    console.error(err);
-    }
-    }
+  //   const result = await response.json();
+  //   console.log(result);
+  //   return result
+  //   } catch (error) {
+  //   console.error(error);
+  //   }
+  //   }
 
 export const makeRoutines = async () => {
     try {
@@ -206,8 +222,8 @@ export const makeRoutines = async () => {
       const result = await response.json();
       console.log(result);
       return result
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }    
 
@@ -227,8 +243,8 @@ export const makeRoutines = async () => {
 //       const result = await response.json();
 //       console.log(result);
 //       return result
-//     } catch (err) {
-//       console.error(err);
+//     } catch (error) {
+//       console.error(error);
 //     }
 //   }
 
@@ -245,8 +261,8 @@ export const makeRoutines = async () => {
       const result = await response.json();
       console.log(result);
       return result
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
 }
       
@@ -266,8 +282,8 @@ export const postRoutinesRoutineIdActivities = async () => {
       const result = await response.json();
       console.log(result);
       return result
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -287,8 +303,8 @@ export const postRoutinesRoutineIdActivities = async () => {
       const result = await response.json();
       console.log(result);
       return result
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
       
@@ -303,8 +319,8 @@ export const postRoutinesRoutineIdActivities = async () => {
       const result = await response.json();
       console.log(result);
       return result
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

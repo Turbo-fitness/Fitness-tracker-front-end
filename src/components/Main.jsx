@@ -11,7 +11,7 @@ import {
   CreateActivity
 } from "./";
 import { Routes, Route } from "react-router-dom";
-import {  getAllRoutines } from "../api/ajaxHelpers";
+import {  getAllRoutines, getAllActivities } from "../api/ajaxHelpers";
 
 const Main = () => {
 	const [routines, setRoutines] = useState([]);
@@ -23,7 +23,7 @@ const Main = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-
+console.log(getAllRoutines());
 
   useEffect(() => {
     const getRoutines = async () => {

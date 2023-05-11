@@ -23,8 +23,8 @@ const handleSubmit= async (event) => {
     return ( 
         <form onSubmit= {handleSubmit}>
             <h2>New Activity</h2>
-            <input placeholder='Name' type='text' value={name} required onChange={(event) => setTitle(event.target.value)}></input>
-            <input placeholder='Description' type='text' value={goal} required onChange={(event) => setDesc(event.target.value)}></input>
+            <input placeholder='Name' type='text' value={name} required onChange={(event) => setName(event.target.value)}></input>
+            <input placeholder='Description' type='text' value={goal} required onChange={(event) => setDescription(event.target.value)}></input>
             <button type='submit'>Create Activity</button>
         </form>
 

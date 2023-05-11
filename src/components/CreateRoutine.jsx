@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const CreateRoutine = ({token, routines, setRoutines, user, setUserRoutines, userRoutines}) => {
 const [name, setName] = useState('')
 const [goal, setGoal] = useState('')
-const [isPublic, setIsPuclic] = useState(false);
+const [isPublic, setIsPublic] = useState(false);
 
 const navigate = useNavigate();
 
@@ -27,8 +27,8 @@ const handleSubmit= async (event) => {
     return ( 
         <form onSubmit= {handleSubmit}>
             <h2>New Routine</h2>
-            <input placeholder='Name' type='text' value={name} required onChange={(event) => setTitle(event.target.value)}></input>
-            <input placeholder='Goal' type='text' value={goal} required onChange={(event) => setDesc(event.target.value)}></input>
+            <input placeholder='Name' type='text' value={name} required onChange={(event) => setName(event.target.value)}></input>
+            <input placeholder='Goal' type='text' value={goal} required onChange={(event) => setGoal(event.target.value)}></input>
             <div>
                 <label htmlFor="public-checkbox">Public:</label>
                 <input type="checkbox" id="public-checkbox" checked={isPublic} onChange={(event) => setIsPublic(event.target.checked)}/>

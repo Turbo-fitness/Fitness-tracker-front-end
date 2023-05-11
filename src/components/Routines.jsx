@@ -2,15 +2,18 @@ import React from "react";
 import "./styles.css"
 import Search from "./Search"
 
-const Routines = ({ routines, setRoutines }) => {
+const Routines = ( {routines, setRoutines} ) => {
 
+    console.log("Routines prop:", routines, typeof routines);
+    
   return (  
     <>
       <h2> All Routines</h2>
       <Search routines={routines} setRoutines={setRoutines} />
       {routines ? (
         <>
-          {map.routines((routine) => {
+
+          {routines.map((routine) => {
             return (
               <article key={routine._id}>
                 <h4>{routine.title}</h4>
