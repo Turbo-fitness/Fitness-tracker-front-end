@@ -23,13 +23,14 @@ const Main = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-console.log(getAllRoutines());
+  const getRoutines = async () => {
+    const allRoutines = await getAllRoutines();
+    setRoutines(allRoutines);
+     };
+     console.log(routines)
 
   useEffect(() => {
-    const getRoutines = async () => {
-      const routines = await getAllRoutines();
-      setRoutines(routines);
-    };
+    console.log("HElLO")
     getRoutines();
   }, []);
 
@@ -68,7 +69,7 @@ console.log(getAllRoutines());
           }
         />
         <Route
-          path="/Routines"
+          path="/routines"
           element={
             <Routines routines={routines} setRoutines={setRoutines} isLoggedIn={isLoggedIn} />
           }

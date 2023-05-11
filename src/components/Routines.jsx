@@ -4,12 +4,12 @@ import Search from "./Search"
 
 const Routines = ( {routines, setRoutines} ) => {
 
-    console.log("Routines prop:", routines, typeof routines);
+   console.log("this is routines",routines) 
     
   return (  
     <>
       <h2> All Routines</h2>
-      <Search routines={routines} setRoutines={setRoutines} />
+      {/* <Search routines={routines} setRoutines={setRoutines} />
       {routines ? (
         <>
 
@@ -26,8 +26,8 @@ const Routines = ( {routines, setRoutines} ) => {
       ) : (
         <>
           <h2>loading...</h2>
-        </>
-      )}
+        </> */}
+      {/* )} */}
     </>
   );
 };
