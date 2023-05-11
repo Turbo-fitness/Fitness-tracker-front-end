@@ -49,7 +49,7 @@ const Main = () => {
             <Welcome
               user={user}
               isLoggedIn={isLoggedIn}
-              Routines={Routines}
+              Routines={routines}
               setRoutines={setRoutines}
             />
           }

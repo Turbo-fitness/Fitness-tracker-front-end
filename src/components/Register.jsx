@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser, myData } from "../api/ajaxHelpers";
 
-const Register = ({setIsLoggedIn, setToken, setUser}) => {
+const Register = ({setIsLoggedIn, token, setToken, setUser}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -11,8 +11,8 @@ const Register = ({setIsLoggedIn, setToken, setUser}) => {
         event.preventDefault();
 
         const userAuth = {user: {username: username, password: password}}
-        const { data } = await registerUser(userAuth)
-        const currentUser = await myData(data.token);
+        const { data } = await registerUser(userAuth);
+        // const currentUser = await myData(data.token);
 
         if(data.token) {
             setToken(data.token);
