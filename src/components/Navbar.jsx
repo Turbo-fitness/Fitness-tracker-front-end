@@ -27,6 +27,7 @@ const Navbar = ({ setUser, setToken, setIsLoggedIn, isLoggedIn }) => {
         ) : (
           <>
             <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Routines</NavLink>
             <NavLink to="/login">Login</NavLink>
             <NavLink to="/register">Register</NavLink>
           </>
