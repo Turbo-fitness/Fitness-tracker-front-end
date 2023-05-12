@@ -1,44 +1,106 @@
 import React, { useState } from "react";
-import {makeRoutine} from '../api/ajaxHelpers';
-import { useNavigate } from 'react-router-dom';
+import {makeRoutine, updateEntireRoutine} from '../api/ajaxHelpers';
 
-const CreateRoutine = ({token, routines, setRoutines, user, setUserRoutines, userRoutines}) => {
-const [name, setName] = useState('')
-const [goal, setGoal] = useState('')
-const [isPublic, setIsPublic] = useState(false);
+const CreateUpdateRoutine = ({
+	routines,
+	setRoutines,
+	isLoggedIn,
+	token,
+	routineToUpdate,
+	setShowForm,
+}) => {
+	const [title, setTitle] = useState(routineToUpdate ? routineToUpdate.title : '');
+	const [description, setDescription] = useState(
+		routineToUpdate ? routineToUpdate.description : ''
+	);
+	const [price, setPrice] = useState(routineToUpdate ? routineToUpdate.price : '');
+	const [location, setLocation] = useState(
+		routineToUpdate ? routineToUpdate.location : ''
+	);
+	// const [deliver, setWillDeliver] = useState(false)
 
-const navigate = useNavigate();
+	const handleSubmit = async (event) => {
+		event.preventDefault();
 
-const handleSubmit= async (event) => {
-    event.preventDefault();
+		const routineToCreate = {
+			routine: {
+				title: title,
+				description: description,
+				price: price,
+				location: location,
+			},
+		};
 
-    const newRoutine= {routine:{name: name, goal: goal, isPublic: isPublic}};
-    const result = await makeRoutine(newRoutine, token);
-    const author = result.data.routine.author.username
-    
-    
-    if (result.data.routine){
-       setRoutines([result.data.routine, ...routines]);
-       if(author == user) {
-        await setUserRoutines([result.data.routine, ...userRoutines])
-       }
-       navigate('/routines')
-}}
-    return ( 
-        <form onSubmit= {handleSubmit}>
-            <h2>New Routine</h2>
-            <input placeholder='Name' type='text' value={name} required onChange={(event) => setName(event.target.value)}></input>
-            <input placeholder='Goal' type='text' value={goal} required onChange={(event) => setGoal(event.target.value)}></input>
-            <div>
-                <label htmlFor="public-checkbox">Public:</label>
-                <input type="checkbox" id="public-checkbox" checked={isPublic} onChange={(event) => setIsPublic(event.target.checked)}/>
-            </div>   
-            <button type='submit'>Create Routine</button>
-        </form>
+		if (routineToUpdate) {
+			//routine, token, routine.id
+			// update routine otherwise create it as following
 
-    )
-}
+			const result = await updateEntireRoutine(
+				routineToCreate,
+				token,
+				routineToUpdate.id
+			);
+
+			console.log(token);
+
+			console.log(result);
+			if (result) {
+				const prevRoutines = [...routines];
+
+				prevRoutines.map((routine) => {
+					if (routine._id == result.data.routine._id) {
+						routine = null;
+						routine = { ...result.data.routine };
+					}
+					return routine;
+				});
+				setRoutines([...prevRoutines]);
+			}
+
+			window.location.href = '/routines';
+			setShowForm(true);
+
+			return;
+		}
+
+		const newRoutine = await makeRoutine(routineToCreate, token);
+		setRoutines([newRoutine.data.routine, ...routines]);
+
+		setTitle('');
+		setDescription('');
+		setPrice('');
+		setLocation('');
+	};
+
+	return (
+		<div>
+			<h2>{routineToUpdate ? 'Update Routine' : 'Create Routine'}</h2>
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					placeholder='Routine Name'
+					value={title}
+					onChange={(event) => setTitle(event.target.value)}
+				/>
+				<input
+					type='text'
+					placeholder='Goal'
+					value={description}
+					onChange={(event) => setDescription(event.target.value)}
+				/>
+				<input
+					type='text'
+					placeholder="Creator's Username"
+					value={price}
+					onChange={(event) => setPrice(event.target.value)}
+				/>
+				<button type='submit'>Submit</button>
+			</form>
+		</div>
+	);
+};
 
 
 
-export default CreateRoutine;
+
+export default CreateUpdateRoutine;

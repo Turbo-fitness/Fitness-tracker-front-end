@@ -1,42 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser, myData } from "../api/ajaxHelpers";
+import { registerUser } from "../api/ajaxHelpers";
 
-const Register = ({setIsLoggedIn, token, setToken, setUser}) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+const Register = ({ user, setUser, token, setToken, isLoggedIn,
+    setIsLoggedIn }) => {
+   const [username, setUsername] = useState("");
+   const [password, setPassword] = useState("");
+   const navigate = useNavigate();
+       console.log(username);
 
-        const userAuth = {user: {username: username, password: password}}
-        const { data } = await registerUser(userAuth);
-        // const currentUser = await myData(data.token);
+       const handleSubmit = async (event) => {
+           event.preventDefault();
 
-        if(data.token) {
-            setToken(data.token);
-            setUser(currentUser);
-            setIsLoggedIn(true);
-            localStorage.setItem("token", data.token);
-            
-        }
-        setUsername('');
-        setPassword('');
-        navigate('/routines')
+           const userAuth = {user: {username: username, password:password} };
+           //Example below
+           const data = await registerUser(userAuth);
 
-    }
+           if(data.token) {
+               setToken(data.token)
+               setUser({username, token: data.token})
+               setIsLoggedIn(true)
+           }
+           setUsername("");
+           setPassword("");
+           navigate("/login");
+       }
 
-    return (
-        <>
-        <form onSubmit={handleSubmit}>
-            <h2>Register a New User</h2>
-            <input required type='text' placeholder='username' value={username} onChange={(event) => setUsername(event.target.value)}/>
-            <input required type='password' placeholder='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
-            <button type='submit'>Register & Login</button>
-        </form>
-        </>
-    )
-}
+   return (
+       <>
+       <form onSubmit={handleSubmit}>
+           <input type="text" placeholder="Username" value={username}
+           onChange = {(event) => setUsername(event.target.value)} />
+           <input type="text" placeholder="Password" value={password} 
+           onChange = {(event) => setPassword(event.target.value)} />
+           <button type="submit">Signup</button>
+       </form>
+   </>
+   );
+};
 
 export default Register;

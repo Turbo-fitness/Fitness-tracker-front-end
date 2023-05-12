@@ -23,14 +23,15 @@ const Main = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-  const getRoutines = async () => {
-    const allRoutines = await getAllRoutines();
-    setRoutines(allRoutines);
-     };
-     console.log(routines)
+
 
   useEffect(() => {
     console.log("HElLO")
+    const getRoutines = async () => {
+      console.log("this is getroutines")
+      const allRoutines = await getAllRoutines();
+      setRoutines(allRoutines);
+       };
     getRoutines();
   }, []);
 

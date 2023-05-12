@@ -4,43 +4,60 @@ import { loginUser, myData } from "../api/ajaxHelpers";
 import './styles.css'
 
 
-const Login = ({ setIsLoggedIn, setToken, setUser, setUserRoutines, setUserActivities}) => {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+const Login = ({
+	user,
+	setUser,
+	token,
+	setToken,
+	isLoggedIn,
+	setIsLoggedIn,
+}) => {
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
+	console.log(username);
 
-        const userObj = {user: {username: userName, password: password}}
-        const { data } = await loginUser(userObj)
-        const result = await myData(data.token);
-        const {_id, username} = result.data
-        if(data.token) {
-            setToken(data.token);
-                setUser({_id, username});
-                setUserRoutines(routines)
-                setUserActivities(activities)
-            setIsLoggedIn(true);
-            localStorage.setItem("token", data.token);
-            
-        }
-        setUserName('');
-        setPassword('');
-        navigate('/profile')
+	const handleSubmit = async (event) => {
+		event.preventDefault();
 
-    }
+		const userAuth = { user: { username: username, password: password } };
+		//Example below
+		const data = await loginUser(userAuth);
 
-    return (
-        <>
-        <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-            <input required type='text' placeholder='username' value={userName} onChange={(event) => setUserName(event.target.value)}/>
-            <input required type='text' placeholder='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
-            <button type='submit'>Login</button>
-        </form>
-        </>
-    );
+		if (data.token) {
+			setToken(data.token);
+			setUser({ username, token: data.token });
+
+			// save user and token in localStorage
+			localStorage.setItem('username', username);
+			localStorage.setItem('token', data.token);
+			setIsLoggedIn(true);
+		}
+		setUsername('');
+		setPassword('');
+		navigate('/routines');
+	};
+
+	return (
+		<>
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					placeholder='Username'
+					value={username}
+					onChange={(event) => setUsername(event.target.value)}
+				/>
+				<input
+					type='text'
+					placeholder='Password'
+					value={password}
+					onChange={(event) => setPassword(event.target.value)}
+				/>
+				<button type='submit'>Login</button>
+			</form>
+			<a href='/register'>Do you have an account? Sign up here!</a>
+		</>
+	);
 };
 
 export default Login
