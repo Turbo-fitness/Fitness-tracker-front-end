@@ -115,7 +115,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 						return (
 							<article key={routine.id}>
 								<h2>
-									{routine.title} By: {routine.author.username}
+									{routine.name} By: {routine.creatorName}
 								</h2>
 							</article>
 						);

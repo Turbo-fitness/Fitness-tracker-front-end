@@ -6,11 +6,11 @@ const Welcome = ({ isLoggedIn, user, routines, setRoutines }) => {
     <>
     { isLoggedIn ? (
       <>
-      <h3>Welcome, {user.username}</h3><Routines routines={Routines}/></>
+      <h3>Welcome, {user.username}</h3><Routines routines={routines}/></>
     ):(
       <>
          <h3>Hello! Please login or register to make a New Post.</h3>
-         <Routines routines={Routines} setRoutines={setRoutines}/>
+         <Routines routines={routines} setRoutines={setRoutines}/>
       </>
       )}
     </>
