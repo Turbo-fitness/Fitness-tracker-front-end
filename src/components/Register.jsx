@@ -15,11 +15,14 @@ const Register = ({ user, setUser, token, setToken, isLoggedIn,
            const userAuth = {user: {username: username, password:password} };
            //Example below
            const data = await registerUser(userAuth);
+           console.log(data)
 
-           if(data.token) {
-               setToken(data.token)
-               setUser({username, token: data.token})
-               setIsLoggedIn(true)
+           if(data){
+               if(data.token) {
+                   setToken(data.token)
+                   setUser({username, token: data.token})
+                   setIsLoggedIn(true)
+               }
            }
            setUsername("");
            setPassword("");

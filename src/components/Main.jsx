@@ -11,16 +11,17 @@ import {
   CreateActivity
 } from "./";
 import { Routes, Route } from "react-router-dom";
-import {  getAllRoutines, getAllActivities } from "../api/ajaxHelpers";
+import {  getAllRoutines, getPrivateRoutines, getAllActivities } from "../api/ajaxHelpers";
 
 const Main = () => {
 	const [routines, setRoutines] = useState([]);
+	const [privateRoutines, setPrivateRoutines] = useState([]);
 	const [activities, setActivities] = useState([]);
 	const [user, setUser] = useState({});
 	const [userRoutines, setUserRoutines] = useState([])
 	const [userActivities, setUserActivities] = useState([])
-	const [token, setToken] = useState(localStorage.token);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [token, setToken] = useState(localStorage.getItem("token"));
+	const [isLoggedIn, setIsLoggedIn] = useState(token ? true : false);
 
 
 
@@ -30,6 +31,7 @@ const Main = () => {
     const getRoutines = async () => {
       console.log("this is getroutines")
       const allRoutines = await getAllRoutines();
+      const privateRoutines = await getPrivateRoutines();
       setRoutines(allRoutines);
        };
     getRoutines();

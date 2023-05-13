@@ -24,14 +24,18 @@ const Login = ({
 		//Example below
 		const data = await loginUser(userAuth);
 
-		if (data.token) {
-			setToken(data.token);
-			setUser({ username, token: data.token });
+		console.log(data)
 
-			// save user and token in localStorage
-			localStorage.setItem('username', username);
-			localStorage.setItem('token', data.token);
-			setIsLoggedIn(true);
+		if(data){
+			if (data.token) {
+				setToken(data.token);
+				setUser({ username: data.user.username, token: data.token });
+	
+				// save user and token in localStorage
+				localStorage.setItem('username', data.user.username);
+				//localStorage.setItem('token', data.token);
+				setIsLoggedIn(true);
+			}
 		}
 		setUsername('');
 		setPassword('');
