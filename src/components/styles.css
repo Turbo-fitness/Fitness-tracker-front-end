@@ -3,19 +3,114 @@ nav {
     justify-content: space-between;
     background-color: lightgrey;
     align-items: center;
-    padding-left: 5px;
-    padding-right: 10px;
+    padding-left: 90%;
+    width:92%;
+    padding-right: 90%;
 }
-nav h1 {
-   margin-left: 10px;
-   color: var(--primary-text-color);
-   font-size: 40px; 
+
+ #root {
+
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1px;    
+ }  
+
+ #spandex{
+    height: 30%;
+    width: 30%;
+ }
+
+nav a{
+    text-decoration: underline;
+    font-size: 35px;
+}
+
+ .top_title {
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    background-image: url("https://i.gifer.com/XaoU.gif");
+    top: 0px;
+    width: 100%;
+    padding-bottom: 1px;
+    background-color: black;
+}
+
+ #turbo {
+    font-size: 8em;
+    color: rgb(244, 18, 180);
+}
+            
+        
+ article{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid black;
+    color: cyan;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    height: 200px;
+    width: 160px;
+    padding: 10px;
+    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT60B-A2Kcddwmch1fO7yFSvHdTC3xAYWPuY_fkkYQfmp1RaTeDCD6808SPOL9OiGxCeso&usqp=CAU)
+ }       
+img {
+  
+    width: 60px;
    
 }
-nav a{
-    text-decoration: none;
-    font-size: 20px;
+
+
+  body {
+    margin-top: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    flex-direction: column;
+    background-color: blueviolet;
+    
+  }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 200 px;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+   ;
+  }
+  
+  .routine {
+   color: black;
+   box-sizing: border-box;
+   border: 2px  solid black;
+   height: 30px;
+  }
+
+#register{
+ display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1px;
 }
-nav button {
-    margin-right: 10px;
+
+
+#hans {
+    height: 30%;
+    width: 30%;
+}
+
+h3 {
+    font-size: 35px;
 }

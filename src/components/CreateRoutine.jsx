@@ -9,11 +9,9 @@ const CreateUpdateRoutine = ({
 	routineToUpdate,
 	setShowForm,
 }) => {
-	const [title, setTitle] = useState(routineToUpdate ? routineToUpdate.title : '');
-	const [description, setDescription] = useState(
-		routineToUpdate ? routineToUpdate.description : ''
-	);
-	const [price, setPrice] = useState(routineToUpdate ? routineToUpdate.price : '');
+	const [name, setName] = useState(routineToUpdate ? routineToUpdate.name : '');
+	const [goal, setGoal] = useState(routineToUpdate ? routineToUpdate.goal : '');
+
 	const [location, setLocation] = useState(
 		routineToUpdate ? routineToUpdate.location : ''
 	);

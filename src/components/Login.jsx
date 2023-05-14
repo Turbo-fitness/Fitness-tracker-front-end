@@ -41,25 +41,28 @@ const Login = ({
 		setPassword('');
 		navigate('/routines');
 	};
-
+	
 	return (
 		<>
+	
+			<img id="spandex" src="https://media.tenor.com/F_F4hbYAv7YAAAAM/aerobics-exercise.gif"></img>
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'
 					placeholder='Username'
 					value={username}
 					onChange={(event) => setUsername(event.target.value)}
-				/>
+					/>
 				<input
 					type='text'
 					placeholder='Password'
 					value={password}
 					onChange={(event) => setPassword(event.target.value)}
-				/>
+					/>
 				<button type='submit'>Login</button>
 			</form>
 			<a href='/register'>Do you have an account? Sign up here!</a>
+					
 		</>
 	);
 };

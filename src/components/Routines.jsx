@@ -9,7 +9,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 	const [routineToUpdate, setRoutineToUpdate] = useState(null);
 	const [showForm, setShowForm] = useState(false);
 	const [routinesByUser, setRoutinesByUser] = useState([]);
-
+	const [selectedRoutine, setSelectedRoutine] = useState([])
 	useEffect(() => {
 
 		if (isLoggedIn) {
@@ -58,7 +58,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 			)}
 			{isLoggedIn ? (
 				<>
-					<h1>logged in</h1>
+					<h1>Ready to sweat? </h1>
 					<button
 						onClick={async () => {
 							const newRoutine = await makeRoutine(routineToCreate, token);
@@ -68,7 +68,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 						Create New routine
 					</button>
 					<button onClick={async () => {
-						const updatedRoutine = await updateEntireRoutine(routine.id, routineToCompletelyUpdate);
+						const updatedRoutine = await CreateUpdateRoutine(routine.id, routineToCompletelyUpdate);
 
 						const listToReturn = routines.filter(routine => routine.id !== updatedRoutine.routine.id)
 						setRoutines([updatedRoutine, ...listToReturn])
@@ -91,7 +91,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 
 								<input
 									type='checkbox'
-									id='delivery'
+									id='isPublic'
 									name='vehicle1'
 									value=''
 								></input>
@@ -112,24 +112,34 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 				</>
 			) : (
 				<>
-					<h1>Hello Guest!</h1>
-
-					
-				</>
-			)}
-			;
-			{routines.length && routines.map((routine) => {
-						return (
-							<article key={routine.id}>
-								<h2>
-									{routine.name} By: {routine.creatorName}
-								</h2>
-							</article>
-						);
+				<h1>Hello Guest!</h1>
+				<div className='container'>
+				  {routines.length &&
+					routines.map((routine) => {
+					  return (
+						<a href={`/routines/${routine.id}`} key={routine.id}>
+						  <article name='routine' key={routine.id}>
+							<h2>{routine.name}</h2>
+							<img src='https://www.freepnglogos.com/uploads/dumbbell/dumbbell-clipart-etsy-3.png' />
+							<p>By: {routine.creatorName}</p>
+						  </article>
+						</a>
+					  );
 					})}
-		</>
-	);
-};
+					{selectedRoutine && (
+        <div>
+       
+          <h2>{selectedRoutine.name}</h2>
+          <p>{selectedRoutine.goal}</p>
+          
+          <button onClick={() => setSelectedRoutine(null)}>Close</button>
+        </div>
+      )}
+				</div>
+			  </>
+			)}
+		  </>
+		);};
 
 export default Routines;
 
