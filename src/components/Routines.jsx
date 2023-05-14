@@ -112,7 +112,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 				</>
 			) : (
 				<>
-				<h1>Hello Guest!</h1>
+				
 				<div className='container'>
 				  {routines.length &&
 					routines.map((routine) => {
@@ -132,7 +132,7 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
           <h2>{selectedRoutine.name}</h2>
           <p>{selectedRoutine.goal}</p>
           
-          <button onClick={() => setSelectedRoutine(null)}>Close</button>
+          
         </div>
       )}
 				</div>

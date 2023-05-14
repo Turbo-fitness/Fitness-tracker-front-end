@@ -61,7 +61,7 @@ const Login = ({
 					/>
 				<button type='submit'>Login</button>
 			</form>
-			<a href='/register'>Do you have an account? Sign up here!</a>
+			<a id="account" href='/register'>Do you have an account? Sign up here!</a>
 					
 		</>
 	);
