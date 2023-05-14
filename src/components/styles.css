@@ -1,14 +1,36 @@
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: lightgrey;
     align-items: center;
     padding-left: 90%;
     width:92%;
     padding-right: 90%;
 }
+nav a{
+    font-size: 35px;
+    color: rgb(244, 18, 180);
+}
 
- #root {
+.top_title {
+   display: flex;
+   justify-content:center;
+   flex-direction: column;
+   position: absolute;
+   align-items: center;
+   background-image: url("https://i.gifer.com/XaoU.gif");
+   top: 0px;
+   width: 100%;
+   padding-bottom: 1px;
+   background-color: black;
+}
+
+#turbo {
+   font-size: 8em;
+   color: rgb(244, 18, 180);
+}
+
+
+#root {
 
     display: flex;
     justify-content:center;
@@ -23,28 +45,8 @@ nav {
     width: 30%;
  }
 
-nav a{
-    text-decoration: underline;
-    font-size: 35px;
-}
 
- .top_title {
-    display: flex;
-    justify-content:center;
-    flex-direction: column;
-    position: absolute;
-    align-items: center;
-    background-image: url("https://i.gifer.com/XaoU.gif");
-    top: 0px;
-    width: 100%;
-    padding-bottom: 1px;
-    background-color: black;
-}
 
- #turbo {
-    font-size: 8em;
-    color: rgb(244, 18, 180);
-}
             
         
  article{
@@ -57,14 +59,19 @@ nav a{
     margin: 5px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     height: 200px;
-    width: 160px;
-    padding: 10px;
-    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT60B-A2Kcddwmch1fO7yFSvHdTC3xAYWPuY_fkkYQfmp1RaTeDCD6808SPOL9OiGxCeso&usqp=CAU)
- }       
+    width: 170px;
+    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT60B-A2Kcddwmch1fO7yFSvHdTC3xAYWPuY_fkkYQfmp1RaTeDCD6808SPOL9OiGxCeso&usqp=CAU);
+    overflow: hidden;
+ }  
+
+
+
 img {
   
     width: 60px;
    
+
+
 }
 
 
@@ -74,8 +81,8 @@ img {
     flex-wrap: wrap;
     justify-content:center;
     flex-direction: column;
-    background-color: blueviolet;
-    
+    /* background-image:url(https://images.gr-assets.com/hostedimages/1406925961ra/10618810.gif) ; */
+  background-color: black ;
   }
 
 .container {
@@ -114,3 +121,42 @@ img {
 h3 {
     font-size: 35px;
 }
+#joinus{
+    color: rgb(244, 18, 180);
+    
+        font-size: 5em;
+        text-align: center;
+        text-shadow: 1px 1px black;
+      }
+
+#welcome {
+    font-size: 35px;
+    color: rgb(244, 18, 180);
+
+}
+#account {
+   color:white;
+
+    }
+
+button {
+    background-color:rgb(244, 18, 180) ;
+    color: white;
+  }
+  
+  button:hover {
+    background-color: white;
+    color: rgb(244, 18, 180);
+  }
+  
+  #clicked {
+    color:aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 200 px;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+   ;
+  }

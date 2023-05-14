@@ -74,24 +74,9 @@ const CreateUpdateRoutine = ({
 		<div>
 			<h2>{routineToUpdate ? 'Update Routine' : 'Create Routine'}</h2>
 			<form onSubmit={handleSubmit}>
-				<input
-					type='text'
-					placeholder='Routine Name'
-					value={title}
-					onChange={(event) => setTitle(event.target.value)}
-				/>
-				<input
-					type='text'
-					placeholder='Goal'
-					value={description}
-					onChange={(event) => setDescription(event.target.value)}
-				/>
-				<input
-					type='text'
-					placeholder="Creator's Username"
-					value={price}
-					onChange={(event) => setPrice(event.target.value)}
-				/>
+				<input placeholder='Routine Name' type='text' value={name} required onChange={(event) => setTitle(event.target.value)}/>
+				<input placeholder='Goal' type='text' value={goal} required onChange={(event) => setDescription(event.target.value)}/>
+				
 				<button type='submit'>Submit</button>
 			</form>
 		</div>

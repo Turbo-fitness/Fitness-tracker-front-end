@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css"
-import Search from "./Search"
+
 
 const Activities = ({ activities, setActivities }) => {
 
