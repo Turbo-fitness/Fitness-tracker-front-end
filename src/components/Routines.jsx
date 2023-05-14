@@ -8,18 +8,23 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 
 	const [routineToUpdate, setRoutineToUpdate] = useState(null);
 	const [showForm, setShowForm] = useState(false);
+	const [routinesByUser, setRoutinesByUser] = useState([]);
 
-	// useEffect(() => {
-	// 	let routinesByUser = [];
+	useEffect(() => {
 
-	// 	if (isLoggedIn) {
-	// 		const savedUsername = localStorage.getItem('username');
-	// 		routinesByUser = routines.filter(
-	// 			(routine) => routine.author.username === savedUsername
-	// 		);
-	// 		console.log('users routines', routinesByUser.length);
-	// 	}
-	// }, []);
+		if (isLoggedIn) {
+			const savedUsername = JSON.parse(localStorage.getItem('user'));
+			console.log(savedUsername)
+			setRoutinesByUser(routines.filter(
+				(routine) => routine.author && routine.author.username === savedUsername
+			));
+			console.log('users routines', routinesByUser.length);
+		}
+	}, []);
+
+	const routineToCreate = () => {
+		// craete a new routine
+	}
 
 	const deleteRoutineHandler = async (e) => {
 		const response = await deleteRoutine(
@@ -63,16 +68,17 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 						Create New routine
 					</button>
 					<button onClick={async () => {
-              const updatedRoutine = await updateEntireRoutine(routine.id, routineToCompletelyUpdate);
+						const updatedRoutine = await updateEntireRoutine(routine.id, routineToCompletelyUpdate);
 
-              const listToReturn = routines.filter(routine => routine.id !== updatedRoutine.routine.id)
-              setRoutines([updatedRoutine, ...listToReturn])
-            }}
-            >Update PUT Routine</button>
+						const listToReturn = routines.filter(routine => routine.id !== updatedRoutine.routine.id)
+						setRoutines([updatedRoutine, ...listToReturn])
+					}}
+					>Update PUT Routine</button>
 					<button>Update Patch Routine</button>
-					{/* <button
+					
+					<button
 						onClick={async () => {
-							await delete(id);
+							id = undefined;
 							setRoutines([...routines.filter((routine) => routine.id !== { routine })]);
 						}}
 					>
@@ -82,9 +88,6 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 					{routines.map((routine) => {
 						return (
 							<article key={routine.id}>
-								<h2>{routine.title}</h2>
-								<p>{routine.price}</p>
-								<p>{routine.description}</p>
 
 								<input
 									type='checkbox'
@@ -92,26 +95,30 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 									name='vehicle1'
 									value=''
 								></input>
-								{routine.author.username === localStorage.getItem('username') && (
+								{routine.author && routine.author.username === localStorage.getItem('username') && (
 									<button id={routine.id} onClick={deleteRoutineHandler}>
 										Delete
 									</button>
 								)}
 
-								{routine.author.username === localStorage.getItem('username') && (
+								{routine.author && routine.author.username === localStorage.getItem('username') && (
 									<button id={routine.id} onClick={updateRoutineHandler}>
 										Update
 									</button>
 								)}
 							</article>
 						);
-					})} */}
+					})}
 				</>
 			) : (
 				<>
 					<h1>Hello Guest!</h1>
 
-					{routines.length && routines.map((routine) => {
+					
+				</>
+			)}
+			;
+			{routines.length && routines.map((routine) => {
 						return (
 							<article key={routine.id}>
 								<h2>
@@ -120,9 +127,6 @@ const Routines = ({ routines, setRoutines, isLoggedIn, username, token, id }) =>
 							</article>
 						);
 					})}
-				</>
-			)}
-			;
 		</>
 	);
 };

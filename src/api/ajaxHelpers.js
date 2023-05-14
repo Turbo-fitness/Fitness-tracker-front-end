@@ -1,29 +1,29 @@
 const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api'
-
-   
+import React from "react";
 
 
 export const registerUser = async (userObject) => {
+  console.log(userObject)
   try {
+    console.log(userObject)
       const response = await fetch(
-          `${API}/users/register`, {
+          `${BASE_URL}/users/register`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(userObject)
+          body: JSON.stringify(userObject.user)
         });
       // const result = response.json();
       const { success, error, data} = await response.json();
-      console.log({success, error, data});
-      if (success) {
+      console.log(success != undefined && data != undefined);
+      if (success != undefined && data != undefined) {
         const { token, message } = data;
         localStorage.setItem("token", token);
         return { token, message};
       }
       if (!success && !error) {
-        const { name, message } = data;
-        return { name, message};
+        return { error};
       }
       console.log(success, error, data);
   }
@@ -34,26 +34,26 @@ export const registerUser = async (userObject) => {
 
 
       export const loginUser = async (userObject) => {
+        console.log(userObject.user)
         try {
             const response = await fetch(
-                `${API}/users/login`, {
+                `${BASE_URL}/users/login`, {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(userObject)
+                body: JSON.stringify(userObject.user)
               });
             // const result = response.json();
-            const { success, error, data} = await response.json();
-            console.log({success, error, data});
-            if (success) {
-              const { token, message } = data;
+            const {message, token, user} = await response.json();
+            if (token) {
               localStorage.setItem("token", token);
-              return { token, message};
+              localStorage.setItem("user", JSON.stringify(user));
+              return { token, message, user};
             }
-            if (!success && !error) {
-              const { name, message } = data;
-              return { name, message};
+            if (error) {
+
+                return { error, message};
             }
         }
         catch(error) {
@@ -211,7 +211,7 @@ export const registerUser = async (userObject) => {
 //     }
 //   }     
 export const getAllRoutines = async () => {
-  console.log("hello from getAllRoutines")
+  //console.log("hello from getAllRoutines")
   try {
   const response = await fetch(`${BASE_URL}/routines`, {
     headers: {
@@ -226,6 +226,27 @@ export const getAllRoutines = async () => {
   console.error(err);
   }
   }
+export const getPrivateRoutines = async () => {
+  //console.log("hello from getAllRoutines")
+  try {
+    let user = JSON.parse(localStorage.getItem("user"));
+  const response = await fetch(`${BASE_URL}/routines`, {
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    method: "POST",
+    body: JSON.stringify({userID: user._id})
+  });
+  
+  const result = await response.json();
+  console.log(result);
+  return result
+  } catch (err) {
+  console.error(err);
+  }
+  }
+
+
 
 
   // export const getAllRoutines  = async () => {
