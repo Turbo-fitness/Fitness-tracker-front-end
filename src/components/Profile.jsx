@@ -8,7 +8,7 @@ console.log("this is user", user)
       <>
       <h3>Currently logged in as {user.username}</h3>
       <h2>Your Profile</h2>
-      <button onClick={() => { navigate('/newRoutine')}}>Create New Routine</button> 
+      <button onClick={() => { navigate('/newroutine')}}>Create New Routine</button> 
 
       {userRoutines.length ? (
          <>

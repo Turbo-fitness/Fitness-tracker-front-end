@@ -31,6 +31,7 @@ const Register = ({ user, setUser, token, setToken, isLoggedIn,
 
    return (
        <>
+           <div id="register">
        <form onSubmit={handleSubmit}>
            <input type="text" placeholder="Username" value={username}
            onChange = {(event) => setUsername(event.target.value)} />
@@ -38,6 +39,10 @@ const Register = ({ user, setUser, token, setToken, isLoggedIn,
            onChange = {(event) => setPassword(event.target.value)} />
            <button type="submit">Signup</button>
        </form>
+    <h1>Join us because</h1>
+    <img id="hans" src="https://media3.giphy.com/media/KHw2Oi9NNAxmo/giphy.gif?cid=ecf05e47yn96wqf59vzglnwu1k3b0ptdf2qc69wxs8ax9gpe&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Hansandfranz" />
+   </div>
+   
    </>
    );
 };
